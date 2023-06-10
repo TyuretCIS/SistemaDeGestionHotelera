@@ -9,20 +9,52 @@
 </head>
 <body>
     <h1>Pacientes</h1>
+
+    <div id="listado"></div>
+    <script>
+        // Utilizando JavaScript para cargar el archivo PHP en el elemento div
+        fetch('hospital.php')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('listado').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error al cargar el listado de hospital:', error);
+            });
+    </script>
+
+
     <table>
         <tr>
+            <th> ID </th>
             <th> Nombre </th>
             <th> Apellidos </th>
-            <th> DNI </th>
+            <th> Género </th>
+            <th> Fecha de admisión </th>
             <th> Enfermedad </th>
         </tr>
         <tr>
+            <td> 123 </td>
             <td> Guillermo </td>
             <td> Roca Rocamora </td>
-            <td> 77109223E </td>
+            <td> Hombre </td>
+            <td> 22 de enero de 2023 </td>
             <td> Fiebre fuerte </td>
-            <td id="editar"> <a href="google.com"></a>Editar </td>
+            <td><a href="https://www.otro-lugar.com" class="boton">Editar</a></td>
         </tr>
     </table>
+
+    <br>
+
+    <form action="insert.php" method="post">
+        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="number" name="edad" placeholder="Edad">
+        <input type="text" name="genero" placeholder="Género">
+        <input type="date" name="fecha_de_admision" placeholder="Fecha de Admisión">
+        <input type="text" name="enfermedad" placeholder="Enfermedad">
+        <input type="submit" value="Añadir registro">
+    </form>
+    <script src="script.js"></script>
+
 </body>
 </html>
